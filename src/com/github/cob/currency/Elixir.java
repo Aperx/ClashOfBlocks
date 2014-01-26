@@ -21,4 +21,18 @@ public class Elixir {
 		COBAPI.updateStats(player);
 	}
 
+	public void addElixir(String player, int amount)
+    {
+        if(elixir.containsKey(player))
+            elixir.put(player, elixir.get(player) + amount);
+        COBAPI.updateStats(player);
+    }
+	
+	public void minusElixir(String player, int amount)
+    {
+        if(elixir.containsKey(player))
+            elixir.put(player, elixir.get(player) - amount);
+        COBAPI.updateStats(player);
+    }
+
 }

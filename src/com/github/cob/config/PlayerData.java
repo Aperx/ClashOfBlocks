@@ -39,25 +39,19 @@ public class PlayerData {
 		}
 	}
 	
-	public void loadPlayers(Gold gold, Elixir elixir, DarkElixir darkElixir, Gems gems) {
-		if (!(new File(ClashOfBlocks.getInstance().getDataFolder(), "players.yml")).exists()) {
-			this.$getPlayers().set("player.stilldabomb.gold", 1290);
-			this.$getPlayers().set("player.stilldabomb.elixir", 1290);
-			this.$getPlayers().set("player.stilldabomb.darkelixir", 1290);
-			this.$getPlayers().set("player.stilldabomb.gems", 1290);
-			this.$savePlayers();
-		}
+	public void loadPlayers(Gold gold, Elixir elixir, DarkElixir darkElixir, Gems gems, Trophies trophies) {
 		ConfigurationSection sec = this.$getPlayers().getConfigurationSection("player");
+		if (sec == null) return;
 		for (String player : sec.getKeys(false)) {
-			if (player == null) System.out.println("Player was null");
 			gold.setGold(player, sec.getInt(player + ".gold"));
 			elixir.setElixir(player, sec.getInt(player + ".elixir"));
 			darkElixir.setDarkElixir(player, sec.getInt(player + ".darkelixir"));
 			gems.setGems(player, sec.getInt(player + ".gems"));
+			trophies.setTrophies(player, sec.getInt(player + ".trophies"));
 		}
 	}
 	
-	public void savePlayers(Gold gold, Elixir elixir, DarkElixir darkElixir, Gems gems) {
+	public void savePlayers(Gold gold, Elixir elixir, DarkElixir darkElixir, Gems gems, Trophies trophies) {
 		for (String player : gold.getGold().keySet()) {
 			this.$getPlayers().set("player." + player + ".gold", gold.getGold(player));
 		}
@@ -73,6 +67,12 @@ public class PlayerData {
 		for (String player : gems.getGems().keySet()) {
 			this.$getPlayers().set("player." + player + ".gems", gems.getGems(player));
 		}
+		
+		for (String player : trophies.getTrophies().keySet()) {
+			this.$getPlayers().set("player." + player + ".trophies", trophies.getTrophies(player));
+		}
+		
+		this.$savePlayers();
 	}
 	
 }

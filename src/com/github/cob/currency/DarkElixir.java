@@ -16,9 +16,25 @@ public class DarkElixir {
 		return (this.darkElixir.containsKey(player) ? this.darkElixir.get(player) : -1);
 	}
 	
-	public void setDarkElixir(String player, int gold) {
+	public void setDarkElixir(String player, int gold) 
+	{
 		this.darkElixir.put(player, gold);
 		COBAPI.updateStats(player);
 	}
+	
+	 public void addDarkElixir(String player, int amount)
+	    {
+	        if(darkElixir.containsKey(player))
+	            darkElixir.put(player, darkElixir.get(player) + amount);
+	        COBAPI.updateStats(player);
+	    }
+	 
+	 public void minusDarkElixir(String player, int amount)
+	    {
+	        if(darkElixir.containsKey(player))
+	            darkElixir.put(player, darkElixir.get(player) - amount);
+	        COBAPI.updateStats(player);
+	    }
+	  
 
 }

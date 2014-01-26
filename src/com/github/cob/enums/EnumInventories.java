@@ -4,11 +4,16 @@ import com.github.cob.ClashOfBlocks;
 import com.github.cob.inventories.Inventory;
 
 public enum EnumInventories {
-	
+	MAIN_TOWN("maintown", com.github.cob.inventories.town.MainTownInv.class),
 	PLUGIN_MENU("pluginmenu", com.github.cob.inventories.PluginMenu.class),
 	ADMIN_HELP("adminhelp", com.github.cob.inventories.help.AdminHelpInv.class),
 	MAIN_HELP("mainhelp", com.github.cob.inventories.help.MainHelpInv.class),
-	PLAYER_HELP("playerhelp", com.github.cob.inventories.help.PlayerHelpInv.class);
+	PLAYER_HELP("playerhelp", com.github.cob.inventories.help.PlayerHelpInv.class),
+	SHIELD_MENU("townshield", com.github.cob.inventories.town.TownShieldMenu.class),
+	SHOP_MENU("shopinv", com.github.cob.inventories.shop.ShopInv.class),
+	TOOLS_SHOP("toolsshopinv", com.github.cob.inventories.shop.ToolsShopInv.class),
+	SPELL_FACTORY("spellfactoryinv", com.github.cob.inventories.army.SpellsInv.class);
+	
 	
 	private String name;
 	private Class<?> clazz;
